@@ -1,0 +1,18 @@
+{
+  "name": "holidayjs",
+  "version": "0.0.1",
+  "description": "Holiday generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/jasmine"
+  },
+  "author": "John Kor",
+  "license": "ISC",
+  "dependencies": {
+    "datejs": "0.0.2",
+    "moment": "^2.11.1"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1"
+  }
+}
