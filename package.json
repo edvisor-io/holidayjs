@@ -9,6 +9,7 @@
   "author": "John Kor",
   "license": "ISC",
   "dependencies": {
+    "async": "^1.5.2",
     "datejs": "0.0.2",
     "moment": "^2.11.1"
   },
