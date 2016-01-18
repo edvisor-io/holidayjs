@@ -1,10 +1,12 @@
+var path = require('path')
+
 describe('HolidayJS', function() {
   
   describe('Accessing data files', function() {
     var holidayjs
 
     beforeEach(function(){
-      holidayjs = require('../../lib/holidayjs')
+      holidayjs = require('../../lib/holidayjs')(path.resolve(__dirname, '../../data'))
     })
 
     it('should open the appropriate country data file', function(done) {
@@ -39,7 +41,7 @@ describe('HolidayJS', function() {
 
   describe('Override rule', function() {
     it('should generate holidays off the override rule', function(done) {
-      var holidayjs = require('../../lib/holidayjs')
+      var holidayjs = require('../../lib/holidayjs')('')
       var overrideRuleHoliday = [{
         name: 'Override holiday',
         override: 'January 5'
@@ -62,7 +64,7 @@ describe('HolidayJS', function() {
   describe('Generator rule', function() {
     describe('Day and month without modifier', function() {
       it('should generate holiday', function(done) {
-        var holidayjs = require('../../lib/holidayjs')
+        var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'First monday of September',
           generator: {
@@ -174,7 +176,7 @@ describe('HolidayJS', function() {
 
     describe('Day and month with modifier', function() {
       it('will apply positive or negative day modifier', function(done) {
-        var holidayjs = require('../../lib/holidayjs')
+        var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Holiday 3 days after first monday in september',
           generator: {
@@ -199,7 +201,7 @@ describe('HolidayJS', function() {
       })
 
       it('will apply positive or negative week modifier', function(done) {
-        var holidayjs = require('../../lib/holidayjs')
+        var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Holiday 3 days after first monday in september',
           generator: {
@@ -224,7 +226,7 @@ describe('HolidayJS', function() {
       })
 
       it('will apply positive or negative month modifier', function(done) {
-        var holidayjs = require('../../lib/holidayjs')
+        var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Holiday 3 days after first monday in september',
           generator: {
@@ -251,7 +253,7 @@ describe('HolidayJS', function() {
 
     describe('Special date with modifier', function() {
       it('will set date relative to easter', function(done) {
-        var holidayjs = require('../../lib/holidayjs')
+        var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Good Friday',
           generator: {
