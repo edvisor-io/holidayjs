@@ -44,7 +44,9 @@ describe('HolidayJS', function() {
       var holidayjs = require('../../lib/holidayjs')('')
       var overrideRuleHoliday = [{
         name: 'Override holiday',
-        override: 'January 5'
+        rule: {
+          override: 'January 5'
+        }
       }]
 
       spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
@@ -67,75 +69,91 @@ describe('HolidayJS', function() {
         var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'First monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 1
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 1
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Second monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 2
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 2
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Third monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 3
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 3
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Fourth monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 4
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 4
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Last monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: -1
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: -1
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Second-last monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: -2
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: -2
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Third-last monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: -3
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: -3
+              },
+              month: 'September'
+            }
           }
         }, {
           name: 'Fourth-last monday of September',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: -4
-            },
-            month: 'September'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: -4
+              },
+              month: 'September'
+            }
           }
         }]
 
@@ -179,13 +197,15 @@ describe('HolidayJS', function() {
         var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Holiday 3 days after first monday in september',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 1
-            },
-            month: 'September',
-            modifier: '+3 days'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 1
+              },
+              month: 'September',
+              modifier: '+3 days'
+            }
           }
         }]
 
@@ -204,13 +224,15 @@ describe('HolidayJS', function() {
         var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Holiday 3 days after first monday in september',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 1
-            },
-            month: 'September',
-            modifier: '+1 week'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 1
+              },
+              month: 'September',
+              modifier: '+1 week'
+            }
           }
         }]
 
@@ -229,13 +251,15 @@ describe('HolidayJS', function() {
         var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Holiday 3 days after first monday in september',
-          generator: {
-            day: {
-              day: 'Monday',
-              placement: 1
-            },
-            month: 'September',
-            modifier: '+1 month'
+          rule: {
+            generator: {
+              day: {
+                day: 'Monday',
+                placement: 1
+              },
+              month: 'September',
+              modifier: '+1 month'
+            }
           }
         }]
 
@@ -256,9 +280,11 @@ describe('HolidayJS', function() {
         var holidayjs = require('../../lib/holidayjs')('')
         var overrideRuleHoliday = [{
           name: 'Good Friday',
-          generator: {
-            special: '%EASTER',
-            modifier: '-2 days'
+          rule: {
+            generator: {
+              special: '%EASTER',
+              modifier: '-2 days'
+            }
           }
         }]
 
