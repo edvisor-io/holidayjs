@@ -25,6 +25,21 @@ holidayjs.calculateHolidays('ca', 2015, function(err, holidays) {
 
 ## data file format
 ```
+[{
+  name: '<some name>',
+  rule: {
+    override: '', //use if you have a specific date in mind, ie. 'January 1'
+    generator: {
+      special: '', //use to base date relatively off a special date. accepted values are %EASTER
+      day: {
+        day: '', //use to specify day of the week, ie. 'Monday'
+        placement: 1 //use to relatively choose the day of the week. possible values are -1, -2, -3, -4, 1, 2, 3, 4
+      },
+      month: 'september', //use to specify month, ie. 'September'
+      modifier: '+3 days' //use to offset the date by some amount
+    }
+  }
+}, {}, ...]
 ```
 
 
