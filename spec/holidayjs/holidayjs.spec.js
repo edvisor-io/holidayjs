@@ -8,7 +8,7 @@ describe('HolidayJS', function() {
     })
 
     it('should open the appropriate country data file', function(done) {
-      holidayjs._openCountryData('test', function(err, data) {
+      holidayjs.openCountryData('test', function(err, data) {
         expect(data).not.toBe(null);
         expect(data).not.toBe(undefined);
         expect(data instanceof Array).toBe(true);
@@ -18,7 +18,7 @@ describe('HolidayJS', function() {
     })
 
     it('should error if the country data file is not found', function(done) {
-      holidayjs._openCountryData('fake', function(err, data) {
+      holidayjs.openCountryData('fake', function(err, data) {
         expect(data).toBe(undefined);
         expect(err).not.toBe(null);
 
@@ -27,7 +27,7 @@ describe('HolidayJS', function() {
     })
 
     it('should force country code to lowercase', function(done) {
-      holidayjs._openCountryData('TEST', function(err, data) {
+      holidayjs.openCountryData('TEST', function(err, data) {
         expect(data).not.toBe(null);
         expect(data).not.toBe(undefined);
         expect(data instanceof Array).toBe(true);
@@ -45,7 +45,7 @@ describe('HolidayJS', function() {
         override: 'January 5'
       }]
 
-      spyOn(holidayjs, '_openCountryData').and.callFake(function(country, cb) {
+      spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
         cb(null, overrideRuleHoliday)
       });
 
@@ -137,7 +137,7 @@ describe('HolidayJS', function() {
           }
         }]
 
-        spyOn(holidayjs, '_openCountryData').and.callFake(function(country, cb) {
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
           cb(null, overrideRuleHoliday)
         });
 
@@ -187,7 +187,7 @@ describe('HolidayJS', function() {
           }
         }]
 
-        spyOn(holidayjs, '_openCountryData').and.callFake(function(country, cb) {
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
           cb(null, overrideRuleHoliday)
         });
 
@@ -212,7 +212,7 @@ describe('HolidayJS', function() {
           }
         }]
 
-        spyOn(holidayjs, '_openCountryData').and.callFake(function(country, cb) {
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
           cb(null, overrideRuleHoliday)
         });
 
@@ -237,7 +237,7 @@ describe('HolidayJS', function() {
           }
         }]
 
-        spyOn(holidayjs, '_openCountryData').and.callFake(function(country, cb) {
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
           cb(null, overrideRuleHoliday)
         });
 
@@ -260,7 +260,7 @@ describe('HolidayJS', function() {
           }
         }]
 
-        spyOn(holidayjs, '_openCountryData').and.callFake(function(country, cb) {
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
           cb(null, overrideRuleHoliday)
         });
 
