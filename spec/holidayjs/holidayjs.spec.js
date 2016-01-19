@@ -216,6 +216,29 @@ describe('HolidayJS', function() {
           done()
         })
       })
+
+      it('will push to following weekday if lands on a weekend', function(done) {
+        var holidayjs = require('../../lib/holidayjs')('')
+        var overrideRuleHoliday = [{
+          name: "Some Day",
+          rule: {
+            override: 'November 27',
+            ifWeekend: {
+              pushTo: 'Monday'
+            }
+          } 
+        }]
+
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
+          cb(null, overrideRuleHoliday)
+        });
+
+        holidayjs.calculateHolidays('ca', 2016, function(err, holidays) {
+          expect(holidays[0].name).toBe(overrideRuleHoliday[0].name)
+          expect(holidays[0].date).toBe('2016-11-28')
+          done()
+        })
+      })
     })
 
     describe('American Thanksgiving', function() {

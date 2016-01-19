@@ -37,7 +37,11 @@ holidayjs.calculateHolidays('ca', 2015, function(err, holidays) {
       },
       month: 'september', //use to specify month, ie. 'September'
       modifier: '+3 days' //use to offset the date by some amount
+    },
+    ifWeekend: { //if the date eventually lands on a weekend...
+      pushTo: 'Monday' //push it to the specified day here
     }
+  }
   }
 }, {}, ...]
 ```
