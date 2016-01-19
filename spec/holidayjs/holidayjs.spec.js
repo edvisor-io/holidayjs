@@ -190,7 +190,61 @@ describe('HolidayJS', function() {
           done()
         })
       })
+
+      it('will calculate first last thirsday of November 2016', function(done) {
+        var holidayjs = require('../../lib/holidayjs')('')
+        var overrideRuleHoliday = [{
+          name: "Some Day",
+          rule: {
+            generator: {
+              day: {
+                day: 'Thursday',
+                placement: -1
+              },
+              month: 'November'
+            }
+          } 
+        }]
+
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
+          cb(null, overrideRuleHoliday)
+        });
+
+        holidayjs.calculateHolidays('ca', 2016, function(err, holidays) {
+          expect(holidays[0].name).toBe(overrideRuleHoliday[0].name)
+          expect(holidays[0].date).toBe('2016-11-24')
+          done()
+        })
+      })
     })
+
+    describe('American Thanksgiving', function() {
+      it('will calculate american thanksgiving properly', function(done) {
+        var holidayjs = require('../../lib/holidayjs')('')
+        var overrideRuleHoliday = [{
+          name: "Thanksgiving Day",
+          rule: {
+            generator: {
+              day: {
+                day: 'Thursday',
+                placement: 4
+              },
+              month: 'November'
+            }
+          } 
+        }]
+
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
+          cb(null, overrideRuleHoliday)
+        });
+
+        holidayjs.calculateHolidays('ca', 2016, function(err, holidays) {
+          expect(holidays[0].name).toBe(overrideRuleHoliday[0].name)
+          expect(holidays[0].date).toBe('2016-11-24')
+          done()
+        })
+      })
+    });
 
     describe('Day and month with modifier', function() {
       it('will apply positive or negative day modifier', function(done) {
