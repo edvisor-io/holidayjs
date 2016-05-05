@@ -376,5 +376,34 @@ describe('HolidayJS', function() {
         })
       })
     })
+
+    describe('Victoria Day', function() {
+      it('will calculate the last Monday before May 25th', function(done) {
+        var holidayjs = require('../../lib/holidayjs')('')
+        var overrideRuleHoliday = [{
+          name: 'Victoria Day',
+          rule: {
+            generator: {
+              month: 'May',
+              date: 25,
+              day: {
+                day: 'Monday',
+                placement: -1
+              }
+            }
+          }
+        }]
+
+        spyOn(holidayjs, 'openCountryData').and.callFake(function(country, cb) {
+          cb(null, overrideRuleHoliday)
+        });
+
+        holidayjs.calculateHolidays('ca', 2016, function(err, holidays) {
+          expect(holidays[0].name).toBe(overrideRuleHoliday[0].name)
+          expect(holidays[0].date).toBe('2016-05-23')
+          done()
+        })
+      })
+    })
   })
 })
