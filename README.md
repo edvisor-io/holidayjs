@@ -36,6 +36,7 @@ holidayjs.calculateHolidays('ca', 2015, function(err, holidays) {
         placement: 1 //use to relatively choose the day of the week. possible values are -1, -2, -3, -4, 1, 2, 3, 4
       },
       month: 'september', //use to specify month, ie. 'September'
+      date: 25, //use to specify a specific date. This is useful if you need something like the first Monday before May 25th
       modifier: '+3 days' //use to offset the date by some amount
     },
     ifWeekend: { //if the date eventually lands on a weekend...
